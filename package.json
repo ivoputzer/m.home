@@ -1,6 +1,6 @@
 {
   "name": "m.home",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a cross-platform path to the user's home utility from the m.icro series",
   "main": "index.js",
   "directories": {
