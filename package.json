@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/ivoputzer/m.home/issues"
   },
-  "homepage": "https://github.com/ivoputzer/m.home#readme"
+  "homepage": "https://github.com/ivoputzer/m.home#readme",
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  }
 }
