@@ -3,6 +3,8 @@
 
 **[m(icro)](https://github.com/ivoputzer/m.cro#readme)[home](https://github.com/ivoputzer/m.home)** is a cross-platform path to the user's home utility from the m.icro series.
 
+
+## example usage
 ```
 const {home, $home} = require('m.home')
 
