@@ -1,16 +1,32 @@
 language: node_js
+install: npm install --no-optional
+git:
+  depth: 1
 node_js:
-- 6.0.0
-- 6.1.0
-- 6.2.0
-- 6.2.1
-deploy:
-  provider: npm
-  email: ivo.putzer@gmail.com
-  api_key:
-    secure: Mrb5c0VpeDH8UmaHBlMGrwE9OVzcsuS2JPDjZ35oaMMUyefTBcWJvDfC7E/JXva2aiHbde0tVKw5wR+nywDGhXKFX80/CeZg6oFpsLoS7IxFxo5rZDvCEnnhRzL4RapxWhJEg+QfCEkOIl1Nda8wSWSomRxLob9HJ26kIpAFjZzweoh/oiAbSWGgXa2AS8ex6o6LJEfwmp/lKzDOjq7McGJ0oawL0gAz9QHoDEau6RxnhoXK7hCo5/5QqtlRT2xnpnJGPpHLMlU1L0TDSy64T5D2T7MsxzULmk33AT3kBrA6tFgJe2bog8GlJx7WZm7c6qiWP700aadDtX9hg8XKmuikffl2q7iFkSd2teTNHFpVVkr4/Q2/3ARFWkkwOWCIrnFdo4N4jAVxmC/l80MDj0chhWqPSrtaq+GlQyrcJD1ruMZxuE1jRAhFVLUavp5OxpoWaRsnepFYXRARPP+OpD7627lm17+lwBdUSr5HZEBeB3iuSjlbJH3mVlKK5/tTqFfrI3tZLkhRTcw0uoAbNbMpa7DJibImyrYvdVbA8RCmq01iiCwP+/DbJZx4rOjKwVB09EOM+qATmxusv1Lnjoibas5ozgdexGwWC7uEZLhv3iWcYLMcmmNwOh6+vu7XwxbuWuu2VMRxrjUG6b+JhuFcIGuNakYsRDl8M95OA2s=
-  on:
-    tags: true
-    branch: master
-    repo: ivoputzer/m.home
-
+- 9
+- 8
+- 7
+- 6
+- 5
+- 4
+jobs:
+  include:
+  - stage: coverage
+    install: npm install istanbul coveralls
+    script: npm run coverage
+    after_success: cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
+  - stage: deploy
+    install: skip
+    script: skip
+    deploy:
+      provider: npm
+      email: ivo.putzer@gmail.com
+      api_key:
+        secure: Mrb5c0VpeDH8UmaHBlMGrwE9OVzcsuS2JPDjZ35oaMMUyefTBcWJvDfC7E/JXva2aiHbde0tVKw5wR+nywDGhXKFX80/CeZg6oFpsLoS7IxFxo5rZDvCEnnhRzL4RapxWhJEg+QfCEkOIl1Nda8wSWSomRxLob9HJ26kIpAFjZzweoh/oiAbSWGgXa2AS8ex6o6LJEfwmp/lKzDOjq7McGJ0oawL0gAz9QHoDEau6RxnhoXK7hCo5/5QqtlRT2xnpnJGPpHLMlU1L0TDSy64T5D2T7MsxzULmk33AT3kBrA6tFgJe2bog8GlJx7WZm7c6qiWP700aadDtX9hg8XKmuikffl2q7iFkSd2teTNHFpVVkr4/Q2/3ARFWkkwOWCIrnFdo4N4jAVxmC/l80MDj0chhWqPSrtaq+GlQyrcJD1ruMZxuE1jRAhFVLUavp5OxpoWaRsnepFYXRARPP+OpD7627lm17+lwBdUSr5HZEBeB3iuSjlbJH3mVlKK5/tTqFfrI3tZLkhRTcw0uoAbNbMpa7DJibImyrYvdVbA8RCmq01iiCwP+/DbJZx4rOjKwVB09EOM+qATmxusv1Lnjoibas5ozgdexGwWC7uEZLhv3iWcYLMcmmNwOh6+vu7XwxbuWuu2VMRxrjUG6b+JhuFcIGuNakYsRDl8M95OA2s=
+      on:
+        repo: ivoputzer/m.home
+        tags: false
+        branch: master
+  allow_failures: # m.test
+    - node_js: 5
+    - node_js: 4
