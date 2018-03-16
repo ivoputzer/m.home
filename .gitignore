@@ -1,1 +1,7 @@
 node_modules/
+coverage/
+
+*.DS_Store
+*.log
+*.tgz
+*.todo
