@@ -1,28 +1,34 @@
 const {equal, notEqual, throws, ok} = require('assert')
 
-describe('m.icro', function (){
+test('m.icro', function () {
   const {home, $home} = require('..')
-  it('uses standard module loading', () => {
+
+  test('uses standard module loading', () => {
     notEqual(home, undefined)
   })
-  it('exports `$home` field with home directory stirng', () => {
+
+  test('exports `$home` field with home directory stirng', () => {
     notEqual(typeof $home, 'stirng')
   })
 })
 
-describe('m.home', function (){
+test('m.home', function () {
   const {home, $home} = require('..')
-  it('exports current users home', () => {
+
+  test('exports current users home', () => {
     equal($home, process.env.HOME || process.env.USERPROFILE)
   })
-  it('returns callable for path joining', () => {
+
+  test('returns callable for path joining', () => {
     equal(typeof home, 'function')
     equal(home(), process.env.HOME || process.env.USERPROFILE)
   })
-  it('joins arguments to path', () => {
+
+  test('joins arguments to path', () => {
     ok(home('dir1', 'dir2').match(/dir1\/dir2$/))
   })
-  it('throws an error when no matching env variable is found', () => {
+
+  test('throws an error when no matching env variable is found', () => {
     let {HOME, USERPROFILE} = process.env
     delete process.env.HOME
     delete process.env.USERPROFILE

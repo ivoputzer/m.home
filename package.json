@@ -7,7 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "node": "node",
+    "pretest": "standard",
+    "test": "m.test",
+    "coverage": "node --require ./node_modules/m.test/global.js ./node_modules/istanbul/lib/cli.js cover --print detail test"
   },
   "repository": {
     "type": "git",
@@ -30,6 +33,15 @@
   },
   "homepage": "https://github.com/ivoputzer/m.home#readme",
   "devDependencies": {
-    "mocha": "^2.5.3"
+    "m.test": "0.0.57",
+    "standard": "^11.0.1"
+  },
+  "standard": {
+    "globals": [
+      "test"
+    ]
+  },
+  "optionalDependencies": {
+    "istanbul": "^0.4.5"
   }
 }
