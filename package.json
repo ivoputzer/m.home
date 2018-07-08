@@ -1,6 +1,7 @@
 {
   "name": "m.home",
   "version": "1.0.3",
+  "author": "Ivo von Putzer Reibegg <ivo.putzer@gmail.com>",
   "description": "a cross-platform path to the user's home utility from the m.icro series",
   "main": "index.js",
   "directories": {
@@ -26,22 +27,22 @@
     "fs",
     "path"
   ],
-  "author": "Ivo von Putzer Reibegg <ivo.putzer@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ivoputzer/m.home/issues"
-  },
-  "homepage": "https://github.com/ivoputzer/m.home#readme",
-  "devDependencies": {
-    "m.test": "0.0.57",
-    "standard": "^11.0.1"
-  },
   "standard": {
     "globals": [
       "test"
     ]
   },
+  "dependencies": {},
+  "devDependencies": {
+    "m.test": "0.0.57",
+    "standard": "^11.0.1"
+  },
   "optionalDependencies": {
     "istanbul": "^0.4.5"
+  },
+  "homepage": "https://github.com/ivoputzer/m.home#readme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ivoputzer/m.home/issues"
   }
 }
