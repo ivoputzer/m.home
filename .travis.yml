@@ -22,8 +22,6 @@ jobs:
     deploy:
       provider: npm
       email: ivo.putzer@gmail.com
-      api_key:
-        secure: $NPM_TOKEN
       on:
         repo: $TRAVIS_REPO_SLUG
         branch: master
