@@ -8,7 +8,6 @@
     "test": "test"
   },
   "scripts": {
-    "node": "node",
     "pretest": "standard",
     "test": "m.test",
     "coverage": "node --require ./node_modules/m.test/global.js ./node_modules/istanbul/lib/cli.js cover --print detail test"
